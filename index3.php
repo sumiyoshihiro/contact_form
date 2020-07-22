@@ -96,3 +96,102 @@ for($i =0; $i <= 3; $i++){
 //      $result = isSeedKun("SeedKun");
 //     var_dump($result);
 
+
+
+
+
+
+// クラスのオブジェクトの生成にはnewを使う
+$robot = new Robot();
+
+$robot->setName('ドラ·ザ·キッド');
+$robot->setFood('ケチャップとマスタードをかけたどら焼き');
+$robot->greeting();
+
+echo '初期値の名前：' . $robot->getName() . '<br>';
+echo '初期値の食べ物：' . $robot->getFood() . '<br>';
+
+// プロパティの前にはpublicを使う
+class Robot{
+private $name;
+private $food;
+function __construct(){ 
+    $this->name = 'ドラえもん';
+    $this->food = 'ドラ焼き';
+    }
+
+
+// プロパティの値を設定するメソッド→セッター
+// プロパティの値を取得するメソッド→ゲッター
+
+public function setName($namae){
+    $this->name = $namae;
+}
+public function getName(){
+   return $this -> $namae;
+}
+public function setFood($tabemono){
+    $this->food = $tabemono;
+}
+public function getFood(){
+    return $this->food;
+}
+// メソッドの場合はfunction を使う
+// thisの使用定義→疑似変数→　->　→アロー演算子、自分のクラスにアクセスするよ
+private function talk(){
+    echo 'こんにちわ、ボクの名前は' . $this->name . です;
+}
+private function eat(){
+    echo '好きな食べ物は' . $this->food . です;
+}
+public function greeting(){
+    $this->talk();
+    $this->eat();
+}
+}
+
+$kid = new Kid();
+$kid->setName('しずか');
+$kid->setSex('girl');
+
+echo $kid->showName();
+
+class Kid{
+  private $name;
+  private $sex;
+
+  // コンストラクタ
+  function __construct(){
+    // 初期値の設定
+    $this->name = 'Seed';
+    $this->sex = 'boy';
+  }
+
+  public function getName(){
+    return $this->name;
+  }
+
+  public function setName($namae){
+    $this->name = $namae;
+  }
+
+  public function getSex(){
+    return $this->sex;
+  }
+
+  public function setSex($seibetsu){
+     $this->sex = $seibetsu;
+   }
+
+  // 性別によって名前の語尾を判定するメソッド
+  public function showName(){
+    if ($this->sex == 'boy') {
+      return $this->name . 'くん';
+    } else if($this->sex == 'girl') {
+      return $this->name . 'ちゃん';
+    } else {
+      return $this->name .'の性別が不明です';
+    }
+  }
+}
+
